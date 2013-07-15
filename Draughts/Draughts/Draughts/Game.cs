@@ -14,17 +14,18 @@ namespace Draughts
     /// <summary>
     /// This is the main type for your game
     /// </summary>
-    public class Game1 : Microsoft.Xna.Framework.Game
+    public class Game : Microsoft.Xna.Framework.Game
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         Core core;
 
-        public Game1()
+        public static ContentManager ContentManager;
+
+        public Game()
         {
-            core = new Core();
             graphics = new GraphicsDeviceManager(this);
-            Content.RootDirectory = "Content";
+            this.Content.RootDirectory = "Content";
             this.IsMouseVisible = true;
         }
 
@@ -49,6 +50,9 @@ namespace Draughts
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
+
+            ContentManager = Content;
+            core = new Core();
 
             // TODO: use this.Content to load your game content here
         }
