@@ -42,15 +42,22 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="piece.jpg">
+    <Compile Include="firefox.jpg">
+      <Name>firefox</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="piece.png">
       <Name>piece</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="firefox.jpg">
-      <Name>firefox</Name>
+    <Compile Include="piece_white.png">
+      <Name>piece_white</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>

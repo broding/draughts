@@ -7,20 +7,24 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Draughts
 {
+    enum Team
+    {
+        WHITE,
+        BLACK
+    }
+
     class Core
     {
-        private Vector2 BOARD_POSITION = new Vector2(100, 100);
-        private Vector2 BOARD_SIZE = new Vector2(60, 60);
+        public static Vector2 BOARD_POSITION = new Vector2(100, 100);
+        public static Vector2 BOARD_SIZE = new Vector2(60, 60);
         private List<GameObject> gameObjects;
 
         public Core()
         {
             gameObjects = new List<GameObject>();
 
-            //gameObjects.Add(new Stone());
-
+            // draw board
             Color boardColor = Color.White;
-
             for (int y = 0; y < 10; y++)
             {
                 for (int x = 0; x < 10; x++)
@@ -33,6 +37,28 @@ namespace Draughts
                         boardColor = boardColor == Color.White ? Color.Brown : Color.White;
                 }
             }
+
+            // place our pieces (BLACK)
+            for (int y = 0; y < 4; y++)
+            {
+                for (int x = 0; x < 10; x+=2)
+                {
+                    Stone stone = new Stone(new Vector2(x + y%2, y), Team.BLACK);
+                    gameObjects.Add(stone);
+                }
+            }
+
+            // place our pieces (WHITE)
+            for (int y = 9; y > 5; y--)
+            {
+                for (int x = 0; x < 10; x += 2)
+                {
+                    Stone stone = new Stone(new Vector2(x + y % 2, y), Team.WHITE);
+                    gameObjects.Add(stone);
+                }
+            }
+
+
         }
 
         public void Draw(SpriteBatch spriteBatch, GameTime gameTime)
