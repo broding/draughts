@@ -21,10 +21,15 @@ namespace Draughts
         Core core;
 
         public static ContentManager ContentManager;
+        public static GraphicsDevice Graphics;
 
         public Game()
         {
             graphics = new GraphicsDeviceManager(this);
+            graphics.IsFullScreen = false;
+            graphics.PreferredBackBufferHeight = 900;
+            graphics.PreferredBackBufferWidth = 800;
+
             this.Content.RootDirectory = "Content";
             this.IsMouseVisible = true;
         }
@@ -49,9 +54,10 @@ namespace Draughts
         protected override void LoadContent()
         {
             // Create a new SpriteBatch, which can be used to draw textures.
-            spriteBatch = new SpriteBatch(GraphicsDevice);
+            spriteBatch = new SpriteBatch(this.GraphicsDevice);
 
             ContentManager = Content;
+            Graphics = this.graphics.GraphicsDevice;
             core = new Core();
 
             // TODO: use this.Content to load your game content here
