@@ -18,9 +18,11 @@ namespace Draughts
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
+        Core core;
 
         public Game1()
         {
+            core = new Core();
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             this.IsMouseVisible = true;
@@ -71,7 +73,7 @@ namespace Draughts
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
 
-            // TODO: Add your update logic here
+            core.Update(gameTime);
 
             base.Update(gameTime);
         }
@@ -84,7 +86,7 @@ namespace Draughts
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            // TODO: Add your drawing code here
+            core.Draw(spriteBatch, gameTime);
 
             base.Draw(gameTime);
         }
